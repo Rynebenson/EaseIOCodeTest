@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 export default function Header() {
   return (
-    <header className="sticky top-0 w-full bg-white border-b border-slate-100 py-4 z-20">
+    <header className="sticky top-0 flex items-center w-full bg-white border-b border-slate-100 h-16 z-20">
       <div className="w-full max-w-5xl mx-auto px-6">
         <Link className="flex items-center gap-x-3" to="/">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 93 22" fill="none" className="h-6 w-auto text-gray-900">

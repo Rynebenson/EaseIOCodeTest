@@ -12,7 +12,9 @@ const Store = (props) => {
   const [state, dispatch] = useReducer(Reducer, initialState)
 
   useEffect(() => {
-    let tasks = localStorage.getItem("tasks") ?? []
+    let tasks = JSON.parse(localStorage.getItem("tasks")) ?? []
+
+    console.log("Tasks: ", tasks)
 
     dispatch({ type: ACTION_TYPES.LOAD_INITIAL_TASKS, payload: tasks })
   }, [])
