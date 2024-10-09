@@ -21,9 +21,9 @@ export const ACTION_TYPES = {
 export const Reducer = (state, action) => {
   switch(action.type) {
     case ACTION_TYPES.LOAD_INITIAL_TASKS:
-      return { ...state, tasks: action.payload }
+      return { ...state, tasks: action.payload, fetch_tasks_request: false }
       
-    case ACTION_TYPES.CREATE_TASK_REQUEST: 
+    case ACTION_TYPES.CREATE_TASK_REQUEST:
       return { ...state, }
     case ACTION_TYPES.CREATE_TASK_SUCCESS:
       return { ...state, }
