@@ -5,6 +5,8 @@ export default function Home() {
   return (
     <Layout>
       <Tasks.Header />
+
+      <Tasks.Container />
     </Layout>
   )
 }
