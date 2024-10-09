@@ -1,5 +1,5 @@
-import Pages from "pages"
-import Store from "libs/Store"
+import Pages from "src/pages"
+import Store from "src/libs/Store"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 function App() {
