@@ -1,6 +1,8 @@
 export const ACTION_TYPES = {
   "LOAD_INITIAL_TASKS": "LOAD_INITIAL_TASKS",
 
+  "SHOW_CREATE_TASK_MODAL": "SHOW_CREATE_TASK_MODAL",
+
   "CREATE_TASK_REQUEST": "CREATE_TASK_REQUEST",
   "CREATE_TASK_SUCCESS": "CREATE_TASK_SUCCESS",
   "CREATE_TASK_FAILURE": "CREATE_TASK_FAILURE",
@@ -22,6 +24,9 @@ export const Reducer = (state, action) => {
   switch(action.type) {
     case ACTION_TYPES.LOAD_INITIAL_TASKS:
       return { ...state, tasks: action.payload, fetch_tasks_request: false }
+
+    case ACTION_TYPES.SHOW_CREATE_TASK_MODAL:
+      return { ...state, show_create_task_modal: action.payload }
       
     case ACTION_TYPES.CREATE_TASK_REQUEST:
       return { ...state, }
