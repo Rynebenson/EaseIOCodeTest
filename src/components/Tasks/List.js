@@ -8,7 +8,7 @@ import Tasks from "."
  */
 export default function TasksList(props) {
   return (
-    <div className="flex flex-col gap-y-6 pb-10">
+    <div className="flex flex-col gap-y-6">
       {props.tasks?.map((task, index) => <Tasks.TaskCard key={index} task={task} />)}
     </div>
   )

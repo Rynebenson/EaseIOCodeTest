@@ -15,8 +15,6 @@ const Store = (props) => {
   useEffect(() => {
     let tasks = JSON.parse(localStorage.getItem("tasks")) ?? []
 
-    console.log("Tasks: ", tasks)
-
     dispatch({ type: ACTION_TYPES.LOAD_INITIAL_TASKS, payload: tasks })
   }, [])
 
