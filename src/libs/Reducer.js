@@ -13,6 +13,8 @@ export const ACTION_TYPES = {
 
   "REMOVE_TOAST": "REMOVE_TOAST",
 
+  "UPDATE_SEARCH_QUERY": "UPDATE_SEARCH_QUERY",
+
   "CREATE_TASK_REQUEST": "CREATE_TASK_REQUEST",
   "CREATE_TASK_SUCCESS": "CREATE_TASK_SUCCESS",
   "CREATE_TASK_FAILURE": "CREATE_TASK_FAILURE",
@@ -52,6 +54,10 @@ export const Reducer = (state, action) => {
       mutableToasts = _.filter(mutableToasts, toast => toast.id !== action.payload)
 
       return { ...state, toasts: [...mutableToasts] }
+    }
+
+    case ACTION_TYPES.UPDATE_SEARCH_QUERY: {
+      return { ...state, search_query: action.payload }
     }
       
     case ACTION_TYPES.CREATE_TASK_REQUEST:

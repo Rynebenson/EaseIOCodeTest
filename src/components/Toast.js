@@ -27,7 +27,7 @@ export default function Toast(props) {
   }, [hideToast])
 
   return (
-    <div className="flex items-center py-3 px-4 w-full bg-white shadow-md shadow-slate-200 rounded-xl">
+    <div className="flex items-center py-3 px-4 w-full bg-white shadow-md shadow-[rgba(0, 0, 0, .06)] rounded-xl">
       <i className={`text-xl ${props.styles}`}>
         {props.icon}
       </i>
