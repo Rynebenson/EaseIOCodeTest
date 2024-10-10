@@ -1,9 +1,9 @@
 import _ from "lodash"
 import { useContext, useEffect, useState } from "react"
 import { TbX } from "react-icons/tb"
-import { ACTION_TYPES } from "src/libs/Reducer"
-import { Context } from "src/libs/Store"
-import { createTask } from "src/services/task"
+import { ACTION_TYPES } from "../../libs/Reducer"
+import { Context } from "../..//libs/Store"
+import { createTask } from "../../services/task"
 import Spinner from "react-spinners/ClipLoader"
 
 export default function CreateTask() {
@@ -47,7 +47,7 @@ export default function CreateTask() {
       },
       notes: {
         required: false,
-        regex: /^[\s\S]{0,50}$/, // Any character, up to 300 characters (if provided)
+        regex: /^[\s\S]{0,300}$/, // Any character, up to 300 characters (if provided)
         message: "Notes can be up to 300 characters."
       },
       date: {
@@ -64,7 +64,7 @@ export default function CreateTask() {
 
     for(let [key, value] of Object.entries(TASK_VALIDATIONS)) {
       if(value.required && !task[key]) {
-        mutableErrors[key] = `Required`
+        mutableErrors[key] = `${key} is required`
         continue
       }
   
@@ -99,8 +99,11 @@ export default function CreateTask() {
   }
 
   return (
-    <div className={`fixed ${state.show_create_task_modal ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} overflow-auto top-0 left-0 h-full w-full bg-slate-500/50 z-50`}>
-      <div className={`flex flex-col ${state.show_create_task_modal ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"} transition-all duration-300 origin-top h-auto bg-white p-6 m-auto sm:rounded-xl sm:my-20 w-full max-w-lg shadow-md md:w-50`}>
+    <div 
+      data-testid="create-task-modal" 
+      className={`fixed ${state.showCreateTaskModal ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} overflow-auto top-0 left-0 h-full w-full bg-slate-500/50 z-50`}
+    >
+      <div className={`flex flex-col ${state.showCreateTaskModal ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"} transition-all duration-300 origin-top h-auto bg-white p-6 m-auto sm:rounded-xl sm:my-20 w-full max-w-lg shadow-md md:w-50`}>
         <div className="flex justify-between items-center pb-4">
           <h2 className="font-medium text-xl">Create Task</h2>
 
@@ -118,7 +121,8 @@ export default function CreateTask() {
         >
           <div>
             <input
-              className="w-full border-b-2 border-slate-200 placeholder:text-slate-400 h-10 outline-none focus:border-blue-600"
+              data-testid="title-input"
+              className="w-full border-b-2 border-slate-200 placeholder:text-slate-400 rounded-none h-10 outline-none focus:border-blue-600"
               name="title"
               placeholder="Title"
               value={task.title}
@@ -132,7 +136,8 @@ export default function CreateTask() {
           <div className="flex gap-x-6">
             <div className="w-full">
               <input
-                className="w-full border-b-2 border-slate-200 placeholder:text-slate-400 h-10 outline-none focus:border-blue-600"
+                data-testid="date-input"
+                className="w-full border-b-2 border-slate-200 placeholder:text-slate-400 h-10 rounded-none outline-none focus:border-blue-600"
                 type="date"
                 name="date"
                 placeholder="Date"
@@ -146,7 +151,8 @@ export default function CreateTask() {
             
             <div className="w-1/3 shrink-0">
               <input
-                className="w-full border-b-2 border-slate-200 placeholder:text-slate-400 h-10 outline-none focus:border-blue-600"
+                data-testid="time-input"
+                className="w-full border-b-2 border-slate-200 placeholder:text-slate-400 h-10 rounded-none outline-none focus:border-blue-600"
                 type="time"
                 name="time"
                 placeholder="Time"
@@ -161,7 +167,8 @@ export default function CreateTask() {
 
           <div>
             <textarea
-              className="w-full border-b-2 border-slate-200 placeholder:text-slate-400 h-20 outline-none resize-none focus:border-blue-600"
+              data-testid="notes-input"
+              className="w-full border-b-2 border-slate-200 placeholder:text-slate-400 h-20 outline-none resize-none rounded-none focus:border-blue-600"
               name="notes"
               placeholder="Notes (Optional)"
               value={task.notes}
@@ -173,7 +180,11 @@ export default function CreateTask() {
           </div>
 
           <div>
-            <button className="flex items-center justify-center w-full h-10 bg-blue-600 rounded-full text-white font-medium">
+            <button 
+              data-testid="create-task-submit-button"
+              className="flex items-center justify-center w-full h-10 bg-blue-600 rounded-full text-white font-medium"
+              disabled={state.createTaskStatus === "loading"}
+            >
               {state.createTaskStatus === "loading" ? <Spinner color="#FFF" size={18} /> : "Create Task"}
             </button>
           </div>

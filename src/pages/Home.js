@@ -1,5 +1,5 @@
-import Layout from "src/components/Layout"
-import Tasks from "src/components/Tasks"
+import Layout from "../components/Layout"
+import Tasks from "../components/Tasks"
 
 export default function Home() {
   return (

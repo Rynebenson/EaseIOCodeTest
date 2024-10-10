@@ -1,9 +1,9 @@
-import Header from "src/components/Header"
+import Header from "../components/Header"
 import Modals from "./Modals"
 
 export default function Layout(props) {
   return (
-    <div>
+    <div className="bg-slate-50">
       <Header />
 
       <div className="w-full max-w-5xl mx-auto px-6">
