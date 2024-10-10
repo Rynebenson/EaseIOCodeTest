@@ -7,12 +7,20 @@ export async function createTask(task, dispatch) {
   try {
     let response = await API.CreateTask(task)
 
-    console.log(response.data)
-    
     dispatch({ type: ACTION_TYPES.CREATE_TASK_SUCCESS, payload: response.data })
   } catch(error) {
-    console.log(error)
-
     dispatch({ type: ACTION_TYPES.CREATE_TASK_FAILURE, payload: error })
+  }
+}
+
+export async function updateTask(task, dispatch) {
+  dispatch({ type: ACTION_TYPES.UPDATE_TASK_REQUEST })
+
+  try {
+    let response = await API.UpdateTask(task)
+    
+    dispatch({ type: ACTION_TYPES.UPDATE_TASK_SUCCESS, payload: response.data })
+  } catch(error) {
+    dispatch({ type: ACTION_TYPES.UPDATE_TASK_FAILURE, payload: error })
   }
 }

@@ -4,6 +4,7 @@ import { ACTION_TYPES, Reducer } from "./Reducer"
 const initialState = {
   fetch_tasks_request: true,
   tasks: [],
+  toasts: []
 }
 
 export const Context = createContext()
