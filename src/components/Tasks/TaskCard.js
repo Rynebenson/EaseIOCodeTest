@@ -1,5 +1,5 @@
 import moment from "moment"
-import { TbCheck } from "react-icons/tb"
+import CompleteTaskButton from "./CompleteTaskButton"
 
 /**
  * @param {React.ComponentProps} props
@@ -14,18 +14,16 @@ export default function TaskCard(props) {
     >
       <div className="flex items-center">
         <div className="w-full">
-          <h2 className="text-xl text-slate-900 font-medium">{props.task.title}</h2>
+          <h2 
+            className={`text-xl text-slate-900 font-medium
+              ${props.task.completed ? "line-through" : ""}
+            `}
+          >{props.task.title}</h2>
 
           <p className="text-slate-500">{props.task.notes}</p>
         </div>
 
-        <button
-          className={`rounded-full h-8 w-8 border border-slate-200 shrink-0
-
-          `}
-        >
-          {props.task.completed && <TbCheck />}
-        </button>
+        <CompleteTaskButton id={props.task.id} completed={props.task.completed} />
       </div>
 
       <div className="border-t border-slate-100 pt-3 mt-6">
