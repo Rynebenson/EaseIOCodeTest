@@ -1,5 +1,5 @@
-import Home from "src/pages/Home"
-import Task from "src/pages/Task"
+import Home from "../pages/Home"
+import Task from "../pages/Task"
 
 const Pages = {
   Home,

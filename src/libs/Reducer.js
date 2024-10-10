@@ -29,7 +29,7 @@ export const Reducer = (state, action) => {
       return { ...state, tasks: action.payload, fetch_tasks_request: false }
 
     case ACTION_TYPES.SHOW_CREATE_TASK_MODAL:
-      return { ...state, show_create_task_modal: action.payload }
+      return { ...state, showCreateTaskModal: action.payload }
       
     case ACTION_TYPES.CREATE_TASK_REQUEST:
       return { ...state, createTaskStatus: "loading" }

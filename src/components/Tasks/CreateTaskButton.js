@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { TbPlus } from "react-icons/tb"
-import { ACTION_TYPES } from "src/libs/Reducer"
-import { Context } from "src/libs/Store"
+import { ACTION_TYPES } from "../../libs/Reducer"
+import { Context } from "../../libs/Store"
 
 export default function CreateTaskButton() {
   const [, dispatch] = useContext(Context)
@@ -12,7 +12,7 @@ export default function CreateTaskButton() {
 
   return (
     <button 
-      className="flex items-center gap-x-1 ml-auto h-8 px-2 bg-blue-50 text-blue-500 rounded-lg"
+      className="flex items-center gap-x-1 ml-auto h-8 px-2 bg-blue-100 text-blue-600 rounded-lg"
       onClick={handleClick}
     >
       <TbPlus />

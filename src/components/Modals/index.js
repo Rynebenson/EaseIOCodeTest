@@ -1,4 +1,4 @@
-import CreateTask from "src/components/Modals/CreateTask"
+import CreateTask from "../../components/Modals/CreateTask"
 
 export default function Modals() {
   return <div />
