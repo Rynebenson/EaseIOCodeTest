@@ -49,6 +49,5 @@ export default function TasksContainer() {
 
       <Tasks.List status={state.tasks_status} tasks={tasks} />
     </div>
-    
   )
 }
