@@ -13,6 +13,7 @@ export default function Layout(props) {
 
       <ToastContainer />
       <Modals.CreateTask />
+      <Modals.DeleteTask />
     </div>
   )
 }

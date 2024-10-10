@@ -101,7 +101,7 @@ export default function CreateTask() {
   return (
     <div 
       data-testid="create-task-modal" 
-      className={`fixed ${state.showCreateTaskModal ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} overflow-auto top-0 left-0 h-full w-full bg-slate-500/50 z-50`}
+      className={`fixed ${state.showCreateTaskModal ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} overflow-auto top-0 left-0 h-full w-full bg-slate-500/50 z-40`}
     >
       <div className={`flex flex-col ${state.showCreateTaskModal ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"} transition-all duration-300 origin-top h-auto bg-white p-6 m-auto sm:rounded-xl sm:my-20 w-full max-w-lg shadow-md md:w-50`}>
         <div className="flex justify-between items-center pb-4">
