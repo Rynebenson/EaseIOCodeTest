@@ -1,10 +1,16 @@
 import _ from "lodash"
 import moment from "moment"
+import TOASTS from "./TOASTS"
+import { v4 } from "uuid"
 
 export const ACTION_TYPES = {
   "LOAD_INITIAL_TASKS": "LOAD_INITIAL_TASKS",
 
   "SHOW_CREATE_TASK_MODAL": "SHOW_CREATE_TASK_MODAL",
+
+  "CLEAR_CACHE": "CLEAR_CACHE",
+
+  "REMOVE_TOAST": "REMOVE_TOAST",
 
   "CREATE_TASK_REQUEST": "CREATE_TASK_REQUEST",
   "CREATE_TASK_SUCCESS": "CREATE_TASK_SUCCESS",
@@ -30,6 +36,20 @@ export const Reducer = (state, action) => {
 
     case ACTION_TYPES.SHOW_CREATE_TASK_MODAL:
       return { ...state, showCreateTaskModal: action.payload }
+
+    case ACTION_TYPES.CLEAR_CACHE: {
+      localStorage.setItem("tasks", JSON.stringify([]))
+
+      return { ...state, tasks: [] }
+    }
+
+    case ACTION_TYPES.REMOVE_TOAST: {
+      let mutableToasts = [...state.toasts]
+
+      mutableToasts = _.filter(mutableToasts, toast => toast.id !== action.payload)
+
+      return { ...state, toasts: [...mutableToasts] }
+    }
       
     case ACTION_TYPES.CREATE_TASK_REQUEST:
       return { ...state, createTaskStatus: "loading" }
@@ -48,9 +68,30 @@ export const Reducer = (state, action) => {
       return { ...state, createTaskStatus: "error" }
 
     case ACTION_TYPES.UPDATE_TASK_REQUEST:
-      return { ...state, }
-    case ACTION_TYPES.UPDATE_TASK_SUCCESS:
-      return { ...state, }
+      return { 
+        ...state,
+        toasts: [...state.toasts, { id: v4(), ...TOASTS.UPDATE_TASK_REQUEST }] 
+      }
+    case ACTION_TYPES.UPDATE_TASK_SUCCESS: {
+      let mutableTasks = [...state.tasks]
+      let mutableToasts = [...state.toasts]
+
+      for(let task of mutableTasks) {
+        if(task.id !== action.payload.id) continue
+
+        task.completed = action.payload.completed
+      }
+
+      localStorage.setItem("tasks", JSON.stringify(mutableTasks))
+
+      mutableToasts = _.filter(mutableToasts, toast => toast.message !== "Updating task...")
+
+      return { 
+        ...state,
+        tasks: mutableTasks,
+        toasts: [...mutableToasts, { id: v4(), ...TOASTS.UPDATE_TASK_SUCCESS }]
+      }
+    }
     case ACTION_TYPES.UPDATE_TASK_FAILURE:
       return { ...state, }
 
