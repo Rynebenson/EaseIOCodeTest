@@ -1,5 +1,6 @@
 import moment from "moment"
 import CompleteTaskButton from "./CompleteTaskButton"
+import DeleteTaskButton from "./DeleteTaskButton"
 
 /**
  * @param {React.ComponentProps} props
@@ -10,7 +11,7 @@ export default function TaskCard(props) {
   return (
     <div
       key={props.task.index}
-      className="relative rounded-xl shadow-sm bg-white p-6"
+      className="relative rounded-xl shadow-sm bg-white p-6 pb-3"
     >
       <div className="flex items-center">
         <div className="w-full">
@@ -26,8 +27,10 @@ export default function TaskCard(props) {
         <CompleteTaskButton id={props.task.id} completed={props.task.completed} />
       </div>
 
-      <div className="border-t border-slate-100 pt-3 mt-6">
+      <div className="flex items-center border-t border-slate-100 pt-3 mt-6">
         <p className="text-sm text-slate-500">{moment(`${props.task.date} ${props.task.time}`).format("MMMM Do, YYYY h:mm a")}</p>
+
+        <DeleteTaskButton id={props.task.id} title={props.task.title} />
       </div>
     </div>
   )
