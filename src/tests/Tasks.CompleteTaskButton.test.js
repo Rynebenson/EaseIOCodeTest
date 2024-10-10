@@ -6,7 +6,7 @@ import { updateTask } from "../services/task"
 // Mock the updateTask service
 jest.mock("../services/task")
 
-describe("CompleteTaskButton", () => {
+describe("<Tasks.CompleteTaskButton />", () => {
   const dispatch = jest.fn()
   
   const renderComponent = (props) => {
