@@ -11,7 +11,7 @@ export default function ToastContainer() {
   }, [state.toasts])
 
   return (
-    <div className={`fixed bottom-6 left-0 right-0 flex flex-col gap-y-3 p-6 mx-auto max-w-md max-h-52 overflow-auto
+    <div className={`fixed bottom-6 left-0 right-0 flex flex-col gap-y-3 p-6 mx-auto max-w-md max-h-52 overflow-auto z-50
       ${state.toasts?.length > 0 ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
     `}>
       {state.toasts?.map((toast) => (

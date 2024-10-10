@@ -1,4 +1,3 @@
-import _ from "lodash"
 import { useContext } from "react"
 import { TbX } from "react-icons/tb"
 import { ACTION_TYPES } from "../../libs/Reducer"
@@ -30,6 +29,7 @@ export default function DeleteTask() {
           <h2 className="font-medium text-xl">Delete Task</h2>
 
           <button 
+            data-testid="close-delete-task-modal-button"
             className="flex items-center justify-center rounded-lg hover:bg-gray-100 text-gray-500 transition-all text-xl h-8 w-8 ml-auto"
             onClick={handleClose}
           >
@@ -44,17 +44,17 @@ export default function DeleteTask() {
         </div>
 
         <button 
-          disabled={state.deleteTaskStatus === "loading" || state.archiveTask === "loading"}
+          disabled={state.deleteTaskStatus === "loading" || state.archiveTaskStatus === "loading"}
           onClick={handleArchive}
-          className="text-slate-600 mt-6 bg-slate-100 font-medium rounded-lg h-10"
+          className="text-slate-600 mt-6 bg-slate-100 font-medium rounded-lg h-10 disabled:bg-slate-50 disabled:text-slate-400"
         >
           Archive
         </button>
 
         <button 
-          disabled={state.deleteTaskStatus === "loading" || state.archiveTask === "loading"}
+          disabled={state.deleteTaskStatus === "loading" || state.archiveTaskStatus === "loading"}
           onClick={handleDelete}
-          className="text-red-600 mt-2 bg-red-100 font-medium rounded-lg h-10 disabled:bg-red-200"
+          className="text-red-600 mt-2 bg-red-100 font-medium rounded-lg h-10 disabled:bg-slate-50 disabled:text-slate-400"
         >
           Permanently Delete
         </button>
