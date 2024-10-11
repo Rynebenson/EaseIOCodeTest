@@ -1,6 +1,6 @@
 # Ease.IO Front End Coding Challenge
 
-This repository contains the code for a frontend application developed as part of a senior developer coding challenge. Below you'll find instructions for running the application, running the tests, and application preferences.
+This repository contains the code for a frontend application developed as part of a Senior front end coding challenge. Below you'll find instructions for running the application, running the tests, as well as the application preferences.
 
 [View Live Demo Here](https://ease-io-test.vercel.app)
 
@@ -43,13 +43,13 @@ To run the tests for this application, follow these steps:
 
 ### Directory Structure
 
-Almost all of the code is located in the `src` folder. I chose to name directories that are created to house a collection of items in plural form and using camlCase (eg: pages, libs, etc). The main ones I created are:
+Almost all of the code is located in the `src` folder. I chose to name the directories that are created to house a collection of items in plural form and using camelCase (eg: pages, libs, etc). The main ones I created are:
 
    - components: React components that can be re-used in several places.
-   - services: These are actions which are called by the UI layer and manage the data within the global state / localStorage.
+   - services: These are actions which are called by the UI layer and manage the data and business logic between the global state / localStorage.
    - libs: Library classes/functions. These are not React components and display no UI.
-   - pages: These are components that define pages in the app.
-   - styles: I used tailwind so styles are written within components, so this currently only houses the global stylesheet.
+   - pages: These are React components that define pages in the app.
+   - styles: As tailwind was used, styles are written within the components html, so currently this only houses the global stylesheet.
 
 ### File Naming/Structure
 
@@ -62,7 +62,7 @@ Files should be named after the component/function/constants they export, respec
 
 ### API
 
-Given that this project is Front End only and utilizes `localStorage` as the database, I wrote API "endpoints" the create delays to mimic realistic API response times. It also shows a layer of abstraction that I would like to setup if a REST API was being used. Here's an example of the API file:
+Given that this project is Front end only and utilizes `localStorage` as the database, I wrote API methods that utilize delays to mimic realistic API request and response times. It also shows a layer of abstraction that I would typically setup when using a REST API. Here's an example of the API method:
 
 ```js
 export async function DeleteTask(task) {
@@ -81,7 +81,7 @@ export async function DeleteTask(task) {
 
 ### Actions
 
-Actions live in the `services` directory and are responsible for managing the data in the global state, as well as on local storage. This is usually:
+Actions live in the `services` directory and are responsible for managing the data within the global state, as well as the local storage. This is usually:
 
    - Handling any business logic with input coming from the UI layer.
    - Making requests to the API.
@@ -103,7 +103,7 @@ export async function archiveTask(task, dispatch) {
 
 ## State Management
 
-The state in this application is managed with a custom Context store which is interacted with via one Reducer. Most actions will dispatch 3 states (request, success, and failure). Data is passed via `payload` and the action is unique by its `type`. I decided to interact with `localStorage` within the Reducer instead of the API file so that I would not have to duplicate the logic done within the Reducer on the mutableTasks. 
+The state in this application is managed with a custom `Context Store`, interacted with via the `Reducer`. Most actions will dispatch 3 states (request, success, and failure). Data is passed via `payload` and the action is unique by its `type`. I decided to update the `localStorage` within the `Reducer` instead of the API file so that I would not have to duplicate the logic done within the `Reducer` while updating the tasks state.
 
 Here's an example of a reducer which contains 3 states triggered by an action:
 
@@ -129,13 +129,13 @@ case ACTION_TYPES.CREATE_TASK_FAILURE:
 
 This layer is solely responsible for:
 
-   - Reflecting the data that is persisten in the `localStorage` as well as the global state mangement
+   - Reflecting the data that is persistent in the `localStorage` as well as the global state mangement
    - Taking user input and passing it to an action
 
 The UI Layer is made up of containers (smart) and presentational components (dumb).
 
    - Containers manage the business logic and call the actions.
-   - Components receive data via props and display the data.
+   - Components receive data via props and simply display the data.
 
 Here's an example of a Container (smart):
 
