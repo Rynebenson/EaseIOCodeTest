@@ -1,10 +1,10 @@
 import { useCallback, useContext, useMemo, useState } from "react"
-import { Context } from "../../libs/Store"
-import Tasks from "."
+import { Context } from "src/libs/Store"
+import Tasks from "src/components/Tasks"
 import { useLocation } from "react-router-dom"
-import { CountTasks, FilterTasks } from "../../libs/utils/tasks"
-import { ACTION_TYPES } from "../../libs/Reducer"
-import { updateTask } from "../../services/task"
+import { CountTasks, FilterTasks } from "src/libs/utils/tasks"
+import { ACTION_TYPES } from "src/libs/Reducer"
+import { updateTask } from "src/services/task"
 
 export default function TasksContainer() {
   const [state, dispatch] = useContext(Context)
@@ -35,13 +35,13 @@ export default function TasksContainer() {
 
   return (
     <div>
-      <Tasks.Header createTaskButtonHandler={createTaskButtonHandler} />
+      <Tasks.TasksHeader createTaskButtonHandler={createTaskButtonHandler} />
 
-      <Tasks.SearchInput query={query} handleInputChange={handleSearchInputChange} />
+      <Tasks.TasksSearchInput query={query} handleInputChange={handleSearchInputChange} />
 
-      <Tasks.Navigation filter={filter} counts={counts} />
+      <Tasks.TasksNavigation filter={filter} counts={counts} />
 
-      <Tasks.List 
+      <Tasks.TasksList 
         status={state.tasks_status} 
         filter={filter} 
         searchQuery={query} 

@@ -1,23 +1,29 @@
-import TasksContainer from "./TasksContainer"
-import TasksList from "./TasksList"
-import CreateTaskButton from "../../components/Tasks/CreateTaskButton"
-import TasksHeader from "./TasksHeader"
-import TaskCard from "../../components/Tasks/TaskCard"
-import DeleteTaskButton from "./TaskCardDeleteButton"
-import TasksSearchInput from "./TasksSearchInput"
-import TasksNavigation from "./TasksNavigation"
-import CreateTaskForm from "./CreateTaskForm"
+import CreateTaskButton from "src/components/Tasks/CreateTaskButton"
+import CreateTaskForm from "src/components/Tasks/CreateTaskForm"
+import DeleteTaskWarningButton from "src/components/Tasks/DeleteTaskWarningButton"
+import DeleteTaskWarningText from "src/components/Tasks/DeleteTaskWarningText"
+import TaskCard from "src/components/Tasks/TaskCard"
+import TaskCardCompleteButton from "src/components/Tasks/TaskCardCompleteButton"
+import TaskCardDeleteButton from "src/components/Tasks/TaskCardDeleteButton"
+import TasksContainer from "src/components/Tasks/TasksContainer"
+import TasksHeader from "src/components/Tasks/TasksHeader"
+import TasksList from "src/components/Tasks/TasksList"
+import TasksNavigation from "src/components/Tasks/TasksNavigation"
+import TasksSearchInput from "src/components/Tasks/TasksSearchInput"
 
 export default function Tasks() {
   return <div />
 }
 
-Tasks.Header = TasksHeader
-Tasks.Container = TasksContainer
-Tasks.List = TasksList
 Tasks.CreateTaskButton = CreateTaskButton
 Tasks.CreateTaskForm = CreateTaskForm
-Tasks.DeleteTaskButton = DeleteTaskButton
+Tasks.DeleteTaskWarningButton = DeleteTaskWarningButton
+Tasks.DeleteTaskWarningText = DeleteTaskWarningText
 Tasks.TaskCard = TaskCard
-Tasks.SearchInput = TasksSearchInput
-Tasks.Navigation = TasksNavigation
+Tasks.TaskCardCompleteButton = TaskCardCompleteButton
+Tasks.TaskCardDeleteButton = TaskCardDeleteButton
+Tasks.TasksContainer = TasksContainer
+Tasks.TasksHeader = TasksHeader
+Tasks.TasksList = TasksList
+Tasks.TasksNavigation = TasksNavigation
+Tasks.TasksSearchInput = TasksSearchInput

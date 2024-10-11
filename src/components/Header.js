@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import EaseLogo from "./EaseLogo"
+import EaseLogo from "src/components/EaseLogo"
 
 export default function Header() {
   return (

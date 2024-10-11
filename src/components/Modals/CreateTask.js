@@ -1,10 +1,10 @@
 import _ from "lodash"
 import { useCallback, useContext, useEffect, useState } from "react"
-import { ACTION_TYPES } from "../../libs/Reducer"
-import { Context } from "../..//libs/Store"
-import { createTask } from "../../services/task"
-import Wrapper from "./Wrapper"
-import Tasks from "../Tasks"
+import { ACTION_TYPES } from "src/libs/Reducer"
+import { Context } from "src/libs/Store"
+import { createTask } from "src/services/task"
+import Wrapper from "src/components/Modals/Wrapper"
+import Tasks from "src/components/Tasks"
 
 export default function CreateTask() {
   const [state, dispatch] = useContext(Context)
