@@ -1,6 +1,6 @@
 import _ from "lodash"
 import moment from "moment"
-import TOASTS from "./TOASTS"
+import TOASTS from "src/libs/TOASTS"
 import { v4 } from "uuid"
 
 export const ACTION_TYPES = {

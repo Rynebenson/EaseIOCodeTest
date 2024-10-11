@@ -1,5 +1,5 @@
-import API from "../libs/API"
-import { ACTION_TYPES } from "../libs/Reducer"
+import API from "src/libs/API"
+import { ACTION_TYPES } from "src/libs/Reducer"
 
 export async function createTask(task, dispatch) {
   dispatch({ type: ACTION_TYPES.CREATE_TASK_REQUEST })
