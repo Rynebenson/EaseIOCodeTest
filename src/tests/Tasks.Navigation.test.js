@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
-import Navigation from '../components/Tasks/Navigation'
+import TasksNavigation from '../components/Tasks/TasksNavigation'
 
 describe('<Tasks.Navigation />', () => {
   it('Renders the task counts correctly based on props', () => {
@@ -13,7 +13,7 @@ describe('<Tasks.Navigation />', () => {
 
     render(
       <MemoryRouter>
-        <Navigation counts={mockCounts} />
+        <TasksNavigation filter="/" counts={mockCounts} />
       </MemoryRouter>
     )
 
@@ -40,7 +40,7 @@ describe('<Tasks.Navigation />', () => {
 
     render(
       <MemoryRouter initialEntries={['/']}>
-        <Navigation counts={mockCounts} />
+        <TasksNavigation filter="" counts={mockCounts} />
       </MemoryRouter>
     );
 

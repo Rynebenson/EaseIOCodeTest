@@ -1,18 +1,26 @@
 import { render, screen, fireEvent } from "@testing-library/react"
-import CompleteTaskButton from "../components/Tasks/CompleteTaskButton"
+import TaskCardCompleteButton from "../components/Tasks/TaskCardCompleteButton"
 import { Context } from "../libs/Store"
 import { updateTask } from "../services/task"
 
 // Mock the updateTask service
-jest.mock("../services/task")
+jest.mock('../services/task', () => ({
+  dispatch: jest.fn(),
+  updateTask: jest.fn()
+}))
 
 describe("<Tasks.CompleteTaskButton />", () => {
   const dispatch = jest.fn()
+
+  beforeEach(() => {
+    updateTask.mockClear()
+    dispatch.mockClear()
+  })
   
   const renderComponent = (props) => {
     return render(
       <Context.Provider value={[{}, dispatch]}>
-        <CompleteTaskButton {...props} />
+        <TaskCardCompleteButton {...props} handleClick={updateTask} />
       </Context.Provider>
     )
   }
@@ -53,8 +61,7 @@ describe("<Tasks.CompleteTaskButton />", () => {
     fireEvent.click(button)
 
     expect(updateTask).toHaveBeenCalledWith(
-      { id: 1, completed: true },
-      dispatch
+      { id: 1, completed: true }
     )
   })
 })
