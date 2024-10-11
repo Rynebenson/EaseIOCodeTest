@@ -91,9 +91,9 @@ export default function CreateTask() {
 
     if(state.createTaskStatus === "loading") return
 
-    let valid = validateTask()
+    let isValid = validateTask()
 
-    if(valid) {
+    if(isValid) {
       createTask(task, dispatch)
     }
   }
@@ -120,11 +120,14 @@ export default function CreateTask() {
           onSubmit={handleSubmit}
         >
           <div>
+            <label htmlFor="title" className="text-sm text-slate-600">Title</label>
+
             <input
               data-testid="title-input"
-              className="w-full border-b-2 border-slate-200 placeholder:text-slate-400 rounded-none h-10 outline-none focus:border-blue-600"
+              className="w-full bg-slate-100 rounded-lg h-10 px-4 outline-blue-600"
+              id="title"
+              type="text"
               name="title"
-              placeholder="Title"
               value={task.title}
               onChange={handleInputChange}
               autoComplete="off"
@@ -135,12 +138,14 @@ export default function CreateTask() {
 
           <div className="flex gap-x-6">
             <div className="w-full">
+              <label htmlFor="date" className="text-sm text-slate-600">Date</label>
+
               <input
                 data-testid="date-input"
-                className="w-full border-b-2 border-slate-200 placeholder:text-slate-400 h-10 rounded-none outline-none focus:border-blue-600"
+                className="w-full bg-slate-100 rounded-lg h-10 px-4 outline-blue-600"
+                id="date"
                 type="date"
                 name="date"
-                placeholder="Date"
                 value={task.date}
                 onChange={handleInputChange}
                 autoComplete="off"
@@ -150,12 +155,14 @@ export default function CreateTask() {
             </div>
             
             <div className="w-1/3 shrink-0">
+              <label htmlFor="time" className="text-sm text-slate-600">Time</label>
+
               <input
                 data-testid="time-input"
-                className="w-full border-b-2 border-slate-200 placeholder:text-slate-400 h-10 rounded-none outline-none focus:border-blue-600"
+                className="w-full bg-slate-100 rounded-lg h-10 px-4 outline-blue-600"
+                id="time"
                 type="time"
                 name="time"
-                placeholder="Time"
                 value={task.time}
                 onChange={handleInputChange}
                 autoComplete="off"
@@ -166,11 +173,14 @@ export default function CreateTask() {
           </div>
 
           <div>
+            <label htmlFor="notes" className="text-sm text-slate-600">Notes (Optional)</label>
+            
             <textarea
               data-testid="notes-input"
-              className="w-full border-b-2 border-slate-200 placeholder:text-slate-400 h-20 outline-none resize-none rounded-none focus:border-blue-600"
+              className="w-full bg-slate-100 rounded-lg h-32 p-4 resize-none outline-blue-600"
+              id="notes"
               name="notes"
-              placeholder="Notes (Optional)"
+              type="text"
               value={task.notes}
               onChange={handleInputChange}
               autoComplete="off"

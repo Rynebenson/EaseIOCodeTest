@@ -18,6 +18,7 @@ export default function Navigation(props) {
         `}
       >
         All 
+        
         <span 
           data-testid="all-count-container"
           className={`flex items-center justify-center h-6 px-2 rounded-full ml-2 text-sm
@@ -38,6 +39,7 @@ export default function Navigation(props) {
         `}
       >
         Open 
+
         <span 
           data-testid="open-count-container"
           className={`flex items-center justify-center h-6 px-2 rounded-full ml-2 text-sm
@@ -56,6 +58,7 @@ export default function Navigation(props) {
         `}
       >
         Completed
+
         <span 
           data-testid="completed-count-container"
           className={`flex items-center justify-center h-6 px-2 rounded-full ml-2 text-sm
@@ -74,6 +77,7 @@ export default function Navigation(props) {
         `}
       >
         Archived
+
         <span 
           data-testid="archived-count-container"
           className={`flex items-center justify-center h-6 px-2 rounded-full ml-2 text-sm

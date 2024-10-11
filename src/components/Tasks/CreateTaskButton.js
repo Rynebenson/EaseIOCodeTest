@@ -12,7 +12,7 @@ export default function CreateTaskButton() {
 
   return (
     <button 
-      className="flex items-center gap-x-1 ml-auto h-8 px-2 bg-blue-100 text-blue-600 rounded-lg"
+      className="flex items-center gap-x-1 h-8 px-2 bg-blue-100 text-blue-600 rounded-lg"
       onClick={handleClick}
     >
       <TbPlus />
