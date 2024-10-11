@@ -6,6 +6,11 @@ import Wrapper from "src/components/Modals/Wrapper"
 import DeleteTaskWarningText from "src/components/Tasks/DeleteTaskWarningText"
 import DeleteTaskWarningButton from "src/components/Tasks/DeleteTaskWarningButton"
 
+/**
+ * Smart container for deleting a task
+ * 
+ * @returns {React.Component}
+ */
 export default function DeleteTask() {
   const [state, dispatch] = useContext(Context)
 

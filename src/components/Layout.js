@@ -2,6 +2,13 @@ import Header from "src/components/Header"
 import Modals from "src/components/Modals"
 import ToastContainer from "src/components/ToastContainer"
 
+/**
+ * Layout prop for each page
+ * 
+ * @param {React.ComponentProps} props
+ * @param {React.ReactNode} props.children
+ * @returns {React.Component}
+ */
 export default function Layout(props) {
   return (
     <div className="bg-slate-50">

@@ -1,6 +1,7 @@
 import { TbTrash } from "react-icons/tb"
 
 /**
+ * Show the deletion modal for tasks where a user can archive or permanently delete
  * 
  * @param {React.ComponentProps} props 
  * @param {String} props.id

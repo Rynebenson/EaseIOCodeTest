@@ -2,6 +2,8 @@ import moment from "moment"
 import Tasks from "src/components/Tasks"
 
 /**
+ * Render the details of a task
+ * 
  * @param {React.ComponentProps} props
  * @param {Boolean} props.task
  * @param {Function} props.handleTaskCompletionClick

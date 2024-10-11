@@ -1,3 +1,9 @@
+/**
+ * 
+ * @param {React.ComponentProps} props
+ * @param {String} props.title
+ * @returns {React.Component}
+ */
 export default function DeleteTaskWarningText(props) {
   return (
     <div className="py-6">

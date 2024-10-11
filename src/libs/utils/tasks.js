@@ -1,5 +1,13 @@
 import _ from "lodash"
 
+/**
+ * Returns an array of tasks based off each filter and search query
+ * 
+ * @param {Array} tasks 
+ * @param {String} searchQuery 
+ * @param {String} filter 
+ * @returns {Array}
+ */
 export const FilterTasks = (tasks, searchQuery, filter) => {
   const match = (task) => _.includes(task.title?.toLowerCase() ?? "", searchQuery?.toLowerCase() ?? "")
 
@@ -14,6 +22,12 @@ export const FilterTasks = (tasks, searchQuery, filter) => {
   })
 }
 
+/**
+ * Returns the length of tasks for each filter
+ * 
+ * @param {Array} tasks
+ * @returns {Object}
+ */
 export const CountTasks = (tasks) => {
   return {
     all: _.filter(tasks, task => !task.archive).length,
@@ -23,6 +37,12 @@ export const CountTasks = (tasks) => {
   }
 }
 
+/**
+ * Returns the task title for each given filter
+ * 
+ * @param {String} filter 
+ * @returns {String}
+ */
 export function GetEmptyTasksTitle(filter) {
   switch (filter) {
     case "open":
@@ -36,6 +56,13 @@ export function GetEmptyTasksTitle(filter) {
   }
 }
 
+/**
+ * Returns the description for each task
+ * 
+ * @param {String} filter 
+ * @param {String} searchQuery 
+ * @returns {String}
+ */
 export function GetEmptyTasksDescription(filter, searchQuery) {
   switch (filter) {
     case "open":
