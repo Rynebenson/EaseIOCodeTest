@@ -35,3 +35,11 @@ To run the tests for this application, follow these steps:
 
 ## App Preferences
 
+### File naming/structure
+
+Files should be named after the component/function/constants they export, respecting the casing used for it. ie:
+
+   - If you export a constant named CONST, its file/directory should be named the CONST.
+   - If you export a component named Text, the file/directory should be named Text.
+   - For files that are utilities that export several functions/classes use the UpperCamelCase version ie: utils/Tasks.js.
+   - All React components should be PascalCase (a.k.a. UpperCamelCase 🐫).

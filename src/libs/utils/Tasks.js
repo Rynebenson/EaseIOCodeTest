@@ -1,14 +1,14 @@
 import _ from "lodash"
 
 /**
- * Returns an array of tasks based off each filter and search query
+ * Returns an array of tasks based off each filter and search 
  * 
  * @param {Array} tasks 
  * @param {String} searchQuery 
  * @param {String} filter 
  * @returns {Array}
  */
-export const FilterTasks = (tasks, searchQuery, filter) => {
+export const filterTasks = (tasks, searchQuery, filter) => {
   const match = (task) => _.includes(task.title?.toLowerCase() ?? "", searchQuery?.toLowerCase() ?? "")
 
   return _.filter(tasks, task => {
@@ -28,7 +28,7 @@ export const FilterTasks = (tasks, searchQuery, filter) => {
  * @param {Array} tasks
  * @returns {Object}
  */
-export const CountTasks = (tasks) => {
+export const countTasks = (tasks) => {
   return {
     all: _.filter(tasks, task => !task.archive).length,
     open: _.filter(tasks, task => !task.archive && !task.completed).length,
@@ -43,7 +43,7 @@ export const CountTasks = (tasks) => {
  * @param {String} filter 
  * @returns {String}
  */
-export function GetEmptyTasksTitle(filter) {
+export function getEmptyTasksTitle(filter) {
   switch (filter) {
     case "open":
       return "No open tasks found"
@@ -63,7 +63,7 @@ export function GetEmptyTasksTitle(filter) {
  * @param {String} searchQuery 
  * @returns {String}
  */
-export function GetEmptyTasksDescription(filter, searchQuery) {
+export function getEmptyTasksDescription(filter, searchQuery) {
   switch (filter) {
     case "open":
       return searchQuery 
