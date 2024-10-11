@@ -4,6 +4,10 @@ This repository contains the code for a frontend application developed as part o
 
 [View Live Demo Here](https://ease-io-test.vercel.app)
 
+<img width="1217" alt="Screenshot 2024-10-11 at 12 57 45 AM" src="https://github.com/user-attachments/assets/d7cbe862-a1dd-4bec-8f47-a7ffc909afe7">
+<img width="1206" alt="Screenshot 2024-10-11 at 12 58 03 AM" src="https://github.com/user-attachments/assets/12c3e051-f023-4ad7-970d-22588a7b17b6">
+<img width="1104" alt="Screenshot 2024-10-11 at 1 00 02 AM" src="https://github.com/user-attachments/assets/ad45a4ec-2cff-4bd9-a5ad-77b1714cb602">
+
 ## Table of Contents
 - [Running the Application](#running-the-application)
 - [Running the Tests](#running-the-tests)
