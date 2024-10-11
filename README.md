@@ -35,7 +35,17 @@ To run the tests for this application, follow these steps:
 
 ## App Preferences
 
-### File naming/structure
+### Directory Structure
+
+Almost all of the code is located in the `src` folder. I chose to name directories that are created to house a collection of items in plural form and using camlCase (eg: pages, libs, etc). The main ones I created are:
+
+   - components: React components that can be re-used in several places.
+   - services: These are actions which are called by the UI layer and manage the data within the global state / localStorage.
+   - libs: Library classes/functions. These are not React components and display no UI.
+   - pages: These are components that define pages in the app.
+   - styles: I used tailwind so styles are written within components, so this currently only houses the global stylesheet.
+
+### File Naming/Structure
 
 Files should be named after the component/function/constants they export, respecting the casing used for it. ie:
 
