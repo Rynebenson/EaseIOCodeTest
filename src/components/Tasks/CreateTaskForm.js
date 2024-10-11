@@ -18,7 +18,7 @@ export default function CreateTaskForm(props) {
       onSubmit={props.handleSubmit}
     >
       <div>
-        <label htmlFor="title" className="text-sm text-slate-600">Title</label>
+        <label htmlFor="title" className="text-sm text-slate-600 block">Title</label>
 
         <input
           data-testid="title-input"
@@ -36,7 +36,7 @@ export default function CreateTaskForm(props) {
 
       <div className="flex gap-x-6">
         <div className="w-full">
-          <label htmlFor="date" className="text-sm text-slate-600">Date</label>
+          <label htmlFor="date" className="text-sm text-slate-600 block">Date</label>
 
           <input
             data-testid="date-input"
@@ -52,8 +52,8 @@ export default function CreateTaskForm(props) {
           {props.errors.date && <p className="text-sm text-red-500">{props.errors.date}</p>}
         </div>
             
-        <div className="w-1/3 shrink-0">
-          <label htmlFor="time" className="text-sm text-slate-600">Time</label>
+        <div className="w-1/3">
+          <label htmlFor="time" className="text-sm text-slate-600 block">Time</label>
 
           <input
             data-testid="time-input"
@@ -71,7 +71,7 @@ export default function CreateTaskForm(props) {
       </div>
 
       <div>
-        <label htmlFor="notes" className="text-sm text-slate-600">Notes (Optional)</label>
+        <label htmlFor="notes" className="text-sm text-slate-600 block">Notes (Optional)</label>
             
         <textarea
           data-testid="notes-input"
