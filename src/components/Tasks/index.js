@@ -1,11 +1,11 @@
-import TasksContainer from "../../components/Tasks/Container"
-import TasksList from "../../components/Tasks/List"
+import TasksContainer from "./TasksContainer"
+import TasksList from "./TasksList"
 import CreateTaskButton from "../../components/Tasks/CreateTaskButton"
-import TasksHeader from "../../components/Tasks/Header"
+import TasksHeader from "./TasksHeader"
 import TaskCard from "../../components/Tasks/TaskCard"
-import DeleteTaskButton from "./DeleteTaskButton"
-import SearchInput from "./SearchInput"
-import Navigation from "./Navigation"
+import DeleteTaskButton from "./TaskCardDeleteButton"
+import TasksSearchInput from "./TasksSearchInput"
+import TasksNavigation from "./TasksNavigation"
 import CreateTaskForm from "./CreateTaskForm"
 
 export default function Tasks() {
@@ -19,5 +19,5 @@ Tasks.CreateTaskButton = CreateTaskButton
 Tasks.CreateTaskForm = CreateTaskForm
 Tasks.DeleteTaskButton = DeleteTaskButton
 Tasks.TaskCard = TaskCard
-Tasks.SearchInput = SearchInput
-Tasks.Navigation = Navigation
+Tasks.SearchInput = TasksSearchInput
+Tasks.Navigation = TasksNavigation

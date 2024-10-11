@@ -1,15 +1,27 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import { Context } from '../libs/Store'
 import { ACTION_TYPES } from '../libs/Reducer'
-import SearchInput from '../components/Tasks/SearchInput'
+import TasksSearchInput from '../components/Tasks/TasksSearchInput'
+import { useState } from 'react'
 
-describe('<Tasks.SearchInput />', () => {
-  const dispatch = jest.fn();
+describe('<TasksSearchInput />', () => {
+  const dispatch = jest.fn()
 
-  it('Renders the input and dispatches the value', () => {
+  it('renders the input and dispatches the value', () => {
+    const TestComponent = () => {
+      const [query, setQuery] = useState('')
+
+      const handleInputChange = (event) => {
+        setQuery(event.target.value)
+        dispatch({ type: ACTION_TYPES.UPDATE_SEARCH_QUERY, payload: event.target.value })
+      }
+
+      return <TasksSearchInput query={query} handleInputChange={handleInputChange} />
+    }
+
     render(
       <Context.Provider value={[{}, dispatch]}>
-        <SearchInput />
+        <TestComponent />
       </Context.Provider>
     )
 
