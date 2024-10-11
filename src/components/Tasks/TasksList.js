@@ -1,5 +1,5 @@
-import Tasks from "."
-import { GetEmptyTasksDescription, GetEmptyTasksTitle } from "../../libs/utils/tasks"
+import Tasks from "src/components/Tasks"
+import { GetEmptyTasksDescription, GetEmptyTasksTitle } from "src/libs/utils/tasks"
 
 /**
  * @param {React.ComponentProps} props

@@ -10,7 +10,7 @@ import { Link } from "react-router-dom"
  * @param {Object} props.counts
  * @returns {React.Component}
  */
-export default function Navigation(props) {
+export default function TasksNavigation(props) {
   const links = useMemo(() => {
     return [
       { label: "All", filter: "", count: props.counts.all },

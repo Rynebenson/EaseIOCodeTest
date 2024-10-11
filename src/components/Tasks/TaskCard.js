@@ -1,6 +1,5 @@
 import moment from "moment"
-import DeleteTaskButton from "./TaskCardDeleteButton"
-import TaskCardCompleteButton from "./TaskCardCompleteButton"
+import Tasks from "src/components/Tasks"
 
 /**
  * @param {React.ComponentProps} props
@@ -26,7 +25,7 @@ export default function TaskCard(props) {
           <p className="text-slate-500">{props.task.notes}</p>
         </div>
 
-        <TaskCardCompleteButton 
+        <Tasks.TaskCardCompleteButton 
           id={props.task.id} 
           completed={props.task.completed} 
           handleClick={props.handleTaskCompletionClick} 
@@ -38,7 +37,7 @@ export default function TaskCard(props) {
           {moment(`${props.task.date} ${props.task.time}`).format("MMMM Do, YYYY h:mm a")}
         </p>
 
-        <DeleteTaskButton 
+        <Tasks.TaskCardDeleteButton 
           id={props.task.id} 
           title={props.task.title} 
           handleClick={props.handleTaskDeletionClick}

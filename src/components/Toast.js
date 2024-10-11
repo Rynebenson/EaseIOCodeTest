@@ -1,6 +1,6 @@
 import { useCallback, useContext, useEffect } from "react"
-import { Context } from "../libs/Store"
-import { ACTION_TYPES } from "../libs/Reducer"
+import { Context } from "src/libs/Store"
+import { ACTION_TYPES } from "src/libs/Reducer"
 
 /**
  * @param {Object} props

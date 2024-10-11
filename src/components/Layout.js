@@ -1,6 +1,6 @@
-import Header from "../components/Header"
-import Modals from "./Modals"
-import ToastContainer from "./ToastContainer"
+import Header from "src/components/Header"
+import Modals from "src/components/Modals"
+import ToastContainer from "src/components/ToastContainer"
 
 export default function Layout(props) {
   return (

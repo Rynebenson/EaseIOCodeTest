@@ -1,6 +1,6 @@
 import { useContext, useEffect, useRef } from "react"
-import Toast from "./Toast"
-import { Context } from "../libs/Store"
+import Toast from "src/components/Toast"
+import { Context } from "src/libs/Store"
 
 export default function ToastContainer() {
   const [state] = useContext(Context)

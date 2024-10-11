@@ -1,4 +1,4 @@
-import Tasks from "."
+import Tasks from "src/components/Tasks"
 
 /**
  * Renders the title and CreateTaskButton for the Home page

@@ -8,7 +8,7 @@ import { TbTrash } from "react-icons/tb"
  * @param {Function} props.handleClick
  * @returns {React.Component}
  */
-export default function TaskCardDeleteTaskButton(props) {
+export default function TaskCardDeleteButton(props) {
   const handleClick = () => {
     props.handleClick({ visible: true, id: props.id, title: props.title })
   }
