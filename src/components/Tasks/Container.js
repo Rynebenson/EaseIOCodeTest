@@ -47,7 +47,7 @@ export default function TasksContainer() {
 
       <Tasks.Navigation counts={counts} />
 
-      <Tasks.List status={state.tasks_status} tasks={tasks} />
+      <Tasks.List status={state.tasks_status} filter={filter} searchQuery={state.search_query} tasks={tasks} />
     </div>
   )
 }
