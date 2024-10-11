@@ -110,107 +110,34 @@ The UI Layer is made up of containers (smart) and presentational components (dum
 Here's an example of a Container (smart):
 
 ```js
-export default function CreateTask() {
+export default function DeleteTask() {
   const [state, dispatch] = useContext(Context)
-  const [task, setTask] = useState({ title: "", notes: "", date: "", time: "", completed: false })
-  const [errors, setErrors] = useState({})
-
-  useEffect(() => {
-    if(state.createTaskStatus === "success") {
-      setTask({ title: "", notes: "", date: "", time: "", completed: false })
-
-      dispatch({ type: ACTION_TYPES.SHOW_CREATE_TASK_MODAL, payload: false })
-    }
-  }, [state.createTaskStatus, dispatch])
 
   const handleClose = useCallback(() => {
-    setTask({ title: "", notes: "", date: "", time: "", completed: false })
-
-    dispatch({ type: ACTION_TYPES.SHOW_CREATE_TASK_MODAL, payload: false })
+    dispatch({ type: ACTION_TYPES.SHOW_DELETE_TASK_POPUP, payload: { visible: false, deleteTaskData: {} } })
   }, [dispatch])
-  
-  /**
-   * Update task property with given name, value
-   * 
-   * @param {React.FormEvent<InputEvent>} event
-   * @param {String} event.target.name
-   * @param {String|Date} event.target.value
-   */
-  const handleInputChange = useCallback((event) => {
-    setTask({ ...task, [event.target.name]: event.target.value })
-  }, [task])
 
-  const validateTask = useCallback(() => {
-    let mutableErrors = {}
+  const handleArchive = useCallback(() => {
+    archiveTask({ id: state.deleteTaskData?.id, archive: true }, dispatch)
+  }, [state.deleteTaskData?.id, dispatch])
 
-    let TASK_VALIDATIONS = {
-      title: {
-        required: true,
-        regex: /^[a-zA-Z0-9\s]{3,50}$/, // Alphanumeric, 3-50 characters
-        message: "Title should be 3-50 characters long and contain only letters, numbers, and spaces."
-      },
-      notes: {
-        required: false,
-        regex: /^[\s\S]{0,300}$/, // Any character, up to 300 characters (if provided)
-        message: "Notes can be up to 300 characters."
-      },
-      date: {
-        required: true,
-        regex: /^\d{4}-\d{2}-\d{2}$/, // Matches dates in the format YYYY-MM-DD
-        message: "Date must be in the format YYYY-MM-DD."
-      },
-      time: {
-        required: true,
-        regex: /^([0-1][0-9]|2[0-3]):([0-5][0-9])$/, // Matches times in 24-hour format HH:mm
-        message: "Time must be in the format HH:mm (24-hour format)."
-      }
-    }
+  const handleDelete = useCallback(() => {
+    deleteTask({ id: state.deleteTaskData?.id }, dispatch)
+  }, [state.deleteTaskData?.id, dispatch])
 
-    for(let [key, value] of Object.entries(TASK_VALIDATIONS)) {
-      if(value.required && !task[key]) {
-        mutableErrors[key] = `${key} is required`
-        continue
-      }
-  
-      if(task[key] && value.regex && !value.regex.test(task[key]))
-        mutableErrors[key] = value.message
-    }
-
-    setErrors(mutableErrors)
-
-    if(_.isEmpty(mutableErrors)) return true
+  const disabled = useMemo(() => {
+    if(state.archiveTaskStatus === "loading" || state.deleteTaskStatus === "loading") return true
 
     return false
-  }, [task])
-
-  /**
-   * Validate the task
-   *   - If successful, call the createTask service
-   *   - If unsuccessful, display errors on form
-   * 
-   * @param {React.FormEvent} event
-   */
-  const handleSubmit = useCallback((event) => {
-    event.preventDefault()
-
-    if(state.createTaskStatus === "loading") return
-
-    let isValid = validateTask()
-
-    if(isValid) {
-      createTask(task, dispatch)
-    }
-  }, [task, state.createTaskStatus, dispatch, validateTask])
+  }, [state.archiveTaskStatus, state.deleteTaskStatus])
 
   return (
-    <Wrapper dataTestId="create-task-modal" closeButtonDataTestId="close-create-task-modal-button" title="Create Task" visible={state.showCreateTaskModal} handleClose={handleClose}>
-      <Tasks.CreateTaskForm 
-        task={task}
-        errors={errors}
-        handleInputChange={handleInputChange}
-        handleSubmit={handleSubmit}
-        status={state.createTaskStatus}
-      />
+    <Wrapper dataTestId="delete-task-modal" closeButtonDataTestId="close-delete-task-modal-button" title="Delete Task" visible={state.showDeleteTaskModal} handleClose={handleClose}>
+      <DeleteTaskWarningText title={state.deleteTaskData?.title} />
+
+      <DeleteTaskWarningButton title="Archive" disabled={disabled} handleClick={handleArchive} />
+
+      <DeleteTaskWarningButton title="Permanently Delete" disabled={disabled} handleClick={handleDelete} />
     </Wrapper>
   )
 }
@@ -219,12 +146,6 @@ export default function CreateTask() {
 And here's an example of a Component (dumb):
 
 ```js
-/**
- * 
- * @param {React.ComponentProps} props
- * @param {String} props.title
- * @returns {React.Component}
- */
 export default function DeleteTaskWarningText(props) {
   return (
     <div className="py-6">
