@@ -2,6 +2,8 @@ import Tasks from "src/components/Tasks"
 import { GetEmptyTasksDescription, GetEmptyTasksTitle } from "src/libs/utils/tasks"
 
 /**
+ * Renders list of Tasks or empty tasks message based off of filter and search query
+ * 
  * @param {React.ComponentProps} props
  * @param {Boolean} props.status
  * @param {Array} props.tasks

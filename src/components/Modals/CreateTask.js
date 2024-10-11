@@ -6,6 +6,11 @@ import { createTask } from "src/services/task"
 import Wrapper from "src/components/Modals/Wrapper"
 import Tasks from "src/components/Tasks"
 
+/**
+ * Smart container for creating a task
+ * 
+ * @returns {React.Component}
+ */
 export default function CreateTask() {
   const [state, dispatch] = useContext(Context)
   const [task, setTask] = useState({ title: "", notes: "", date: "", time: "", completed: false })

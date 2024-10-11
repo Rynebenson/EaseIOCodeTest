@@ -1,4 +1,4 @@
-import { useCallback, useContext, useMemo, useState } from "react"
+import React, { useCallback, useContext, useMemo, useState } from "react"
 import { Context } from "src/libs/Store"
 import Tasks from "src/components/Tasks"
 import { useLocation } from "react-router-dom"
@@ -6,6 +6,11 @@ import { CountTasks, FilterTasks } from "src/libs/utils/tasks"
 import { ACTION_TYPES } from "src/libs/Reducer"
 import { updateTask } from "src/services/task"
 
+/**
+ * Smart container for Tasks
+ * 
+ * @returns {React.Component}
+ */
 export default function TasksContainer() {
   const [state, dispatch] = useContext(Context)
   const [query, setQuery] = useState("")
