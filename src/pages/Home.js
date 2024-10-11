@@ -1,10 +1,10 @@
-import Layout from "../components/Layout"
-import Tasks from "../components/Tasks"
+import Layout from "src/components/Layout"
+import Tasks from "src/components/Tasks"
 
 export default function Home() {
   return (
     <Layout>
-      <Tasks.Container />
+      <Tasks.TasksContainer />
     </Layout>
   )
 }
