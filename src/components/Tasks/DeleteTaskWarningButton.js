@@ -1,4 +1,6 @@
 /**
+ * Renders the text within the DeleteTaskModal
+ * 
  * @param {React.ComponentProps} props
  * @param {Boolean} props.disabled
  * @param {String} props.title

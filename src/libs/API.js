@@ -5,7 +5,7 @@ import { v4 } from "uuid"
  * 
  * @param {Object} task
  * @param {String} task.id
- * @param {Boolean} task.archive
+ * @param {Boolean} task.archived
  * @returns {Promise}
  */
 export async function ArchiveTask(task) {
@@ -69,6 +69,8 @@ export async function UpdateTask(task) {
 }
 
 /**
+ * Delete task
+ * 
  * @param {Object} task 
  * @param {String} task.id
  * @returns {Promise}
