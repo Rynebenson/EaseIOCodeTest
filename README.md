@@ -1,6 +1,6 @@
 # Ease.IO Front End Coding Challenge
 
-This repository contains the code for a frontend application developed as part of a senior developer coding challenge. Below you'll find instructions for running the application, running the tests, app preferences, component differentiation, and API usage.
+This repository contains the code for a frontend application developed as part of a senior developer coding challenge. Below you'll find instructions for running the application, running the tests, and application preferences.
 
 ## Table of Contents
 - [Running the Application](#running-the-application)
