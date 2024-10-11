@@ -13,13 +13,13 @@ export default function DeleteTask() {
     dispatch({ type: ACTION_TYPES.SHOW_DELETE_TASK_POPUP, payload: { visible: false, deleteTaskData: {} } })
   }, [dispatch])
 
-  const handleArchive = () => {
+  const handleArchive = useCallback(() => {
     archiveTask({ id: state.deleteTaskData.id, archive: true }, dispatch)
-  }
+  }, [state.deleteTaskData.id, dispatch])
 
-  const handleDelete = () => {
+  const handleDelete = useCallback(() => {
     deleteTask({ id: state.deleteTaskData.id }, dispatch)
-  }
+  }, [state.deleteTaskData.id, dispatch])
 
   const disabled = useMemo(() => {
     if(state.archiveTaskStatus === "loading" || state.deleteTaskStatus === "loading") return true
