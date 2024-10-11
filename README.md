@@ -95,6 +95,30 @@ export async function archiveTask(task, dispatch) {
 }
 ```
 
+## State Management
+
+The state in this application is managed with a custom Context store which is interacted with via one Reducer. Most actions will dispatch 3 states (request, success, and failure). Data is passed via `payload` and the action is unique by its `type`. I decided to interact with `localStorage` within the Reducer instead of the API file so that I would not have to duplicate the logic done within the Reducer on the mutableTasks. 
+
+Here's an example of a reducer which contains 3 states triggered by an action:
+
+```js
+case ACTION_TYPES.CREATE_TASK_REQUEST:
+   return { ...state, createTaskStatus: "loading" }
+case ACTION_TYPES.CREATE_TASK_SUCCESS: {
+   let mutableTasks = [...state.tasks]
+
+   mutableTasks.push(action.payload)
+
+   mutableTasks = _.sortBy(mutableTasks, (task) => moment(`${task.date} ${task.time}`, "YYYY-MM-DD HH:mm"));
+
+   localStorage.setItem("tasks", JSON.stringify(mutableTasks))
+
+   return { ...state, createTaskStatus: "success", tasks: mutableTasks }
+}
+case ACTION_TYPES.CREATE_TASK_FAILURE:
+   return { ...state, createTaskStatus: "error" }
+```
+
 ## UI Layer
 
 This layer is solely responsible for:
