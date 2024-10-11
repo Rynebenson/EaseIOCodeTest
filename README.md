@@ -2,7 +2,7 @@
 
 This repository contains the code for a frontend application developed as part of a senior developer coding challenge. Below you'll find instructions for running the application, running the tests, and application preferences.
 
-[Link View Live Demo Here](https://ease-io-test.vercel.app)
+[View Live Demo Here](https://ease-io-test.vercel.app)
 
 ## Table of Contents
 - [Running the Application](#running-the-application)
