@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useMemo, useState } from "react"
 import { Context } from "src/libs/Store"
 import Tasks from "src/components/Tasks"
 import { useLocation } from "react-router-dom"
-import { CountTasks, FilterTasks } from "src/libs/utils/tasks"
+import { countTasks, filterTasks } from "src/libs/utils/Tasks"
 import { ACTION_TYPES } from "src/libs/Reducer"
 import { updateTask } from "src/services/task"
 
@@ -17,8 +17,8 @@ export default function TasksContainer() {
   const location = useLocation()
 
   const filter = useMemo(() => new URLSearchParams(location.search).get("filter"), [location.search])
-  const tasks = useMemo(() => FilterTasks(state.tasks, state.search_query, filter), [state.tasks, state.search_query, filter])
-  const counts = useMemo(() => CountTasks(state.tasks, state.search_query), [state.tasks, state.search_query])
+  const tasks = useMemo(() => filterTasks(state.tasks, state.search_query, filter), [state.tasks, state.search_query, filter])
+  const counts = useMemo(() => countTasks(state.tasks, state.search_query), [state.tasks, state.search_query])
 
   const createTaskButtonHandler = useCallback(() => {
     dispatch({ type: ACTION_TYPES.SHOW_CREATE_TASK_MODAL, payload: true })
