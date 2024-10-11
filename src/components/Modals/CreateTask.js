@@ -1,10 +1,10 @@
 import _ from "lodash"
-import { useContext, useEffect, useState } from "react"
-import { TbX } from "react-icons/tb"
+import { useCallback, useContext, useEffect, useState } from "react"
 import { ACTION_TYPES } from "../../libs/Reducer"
 import { Context } from "../..//libs/Store"
 import { createTask } from "../../services/task"
-import Spinner from "react-spinners/ClipLoader"
+import Wrapper from "./Wrapper"
+import Tasks from "../Tasks"
 
 export default function CreateTask() {
   const [state, dispatch] = useContext(Context)
@@ -19,11 +19,11 @@ export default function CreateTask() {
     }
   }, [state.createTaskStatus, dispatch])
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     setTask({ title: "", notes: "", date: "", time: "", completed: false })
 
     dispatch({ type: ACTION_TYPES.SHOW_CREATE_TASK_MODAL, payload: false })
-  }
+  }, [dispatch])
   
   /**
    * Update task property with given name, value
@@ -99,107 +99,14 @@ export default function CreateTask() {
   }
 
   return (
-    <div 
-      data-testid="create-task-modal" 
-      className={`fixed ${state.showCreateTaskModal ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} overflow-auto top-0 left-0 h-full w-full bg-slate-500/50 z-40`}
-    >
-      <div className={`flex flex-col ${state.showCreateTaskModal ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-10"} transition-all duration-300 origin-top h-auto bg-white p-6 m-auto sm:rounded-xl sm:my-20 w-full max-w-lg shadow-md md:w-50`}>
-        <div className="flex justify-between items-center pb-4">
-          <h2 className="font-medium text-xl">Create Task</h2>
-
-          <button 
-            className="flex items-center justify-center rounded-lg hover:bg-gray-100 text-gray-500 transition-all text-xl h-8 w-8 ml-auto"
-            onClick={handleClose}
-          >
-            <TbX />
-          </button>
-        </div>
-
-        <form
-          className="flex flex-col gap-y-6"
-          onSubmit={handleSubmit}
-        >
-          <div>
-            <label htmlFor="title" className="text-sm text-slate-600">Title</label>
-
-            <input
-              data-testid="title-input"
-              className="w-full bg-slate-100 rounded-lg h-10 px-4 outline-blue-600"
-              id="title"
-              type="text"
-              name="title"
-              value={task.title}
-              onChange={handleInputChange}
-              autoComplete="off"
-            />
-
-            {errors.title && <p className="text-sm text-red-500">{errors.title}</p>}
-          </div>
-
-          <div className="flex gap-x-6">
-            <div className="w-full">
-              <label htmlFor="date" className="text-sm text-slate-600">Date</label>
-
-              <input
-                data-testid="date-input"
-                className="w-full bg-slate-100 rounded-lg h-10 px-4 outline-blue-600"
-                id="date"
-                type="date"
-                name="date"
-                value={task.date}
-                onChange={handleInputChange}
-                autoComplete="off"
-              />
-
-              {errors.date && <p className="text-sm text-red-500">{errors.date}</p>}
-            </div>
-            
-            <div className="w-1/3 shrink-0">
-              <label htmlFor="time" className="text-sm text-slate-600">Time</label>
-
-              <input
-                data-testid="time-input"
-                className="w-full bg-slate-100 rounded-lg h-10 px-4 outline-blue-600"
-                id="time"
-                type="time"
-                name="time"
-                value={task.time}
-                onChange={handleInputChange}
-                autoComplete="off"
-              />
-
-              {errors.time && <p className="text-sm text-red-500">{errors.time}</p>}
-            </div>
-          </div>
-
-          <div>
-            <label htmlFor="notes" className="text-sm text-slate-600">Notes (Optional)</label>
-            
-            <textarea
-              data-testid="notes-input"
-              className="w-full bg-slate-100 rounded-lg h-32 p-4 resize-none outline-blue-600"
-              id="notes"
-              name="notes"
-              type="text"
-              value={task.notes}
-              onChange={handleInputChange}
-              autoComplete="off"
-            />
-
-            {errors.notes && <p className="text-sm text-red-500">{errors.notes}</p>}
-          </div>
-
-          <div>
-            <button 
-              data-testid="create-task-submit-button"
-              className="flex items-center justify-center w-full h-10 bg-blue-600 rounded-full text-white font-medium"
-              disabled={state.createTaskStatus === "loading"}
-            >
-              {state.createTaskStatus === "loading" ? <Spinner color="#FFF" size={18} /> : "Create Task"}
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
+    <Wrapper dataTestId="create-task-modal" closeButtonDataTestId="close-create-task-modal-button" title="Create Task" visible={state.showCreateTaskModal} handleClose={handleClose}>
+      <Tasks.CreateTaskForm 
+        task={task}
+        errors={errors}
+        handleInputChange={handleInputChange}
+        handleSubmit={handleSubmit}
+        status={state.createTaskStatus}
+      />
+    </Wrapper>
   )
 }
