@@ -1,10 +1,10 @@
 import { useCallback, useContext, useMemo } from "react"
-import { ACTION_TYPES } from "../../libs/Reducer"
-import { Context } from "../..//libs/Store"
-import { archiveTask, deleteTask } from "../../services/task"
-import Wrapper from "./Wrapper"
-import DeleteTaskWarningText from "../Tasks/DeleteTaskWarningText"
-import DeleteTaskWarningButton from "../Tasks/DeleteTaskWarningButton"
+import { ACTION_TYPES } from "src/libs/Reducer"
+import { Context } from "src/libs/Store"
+import { archiveTask, deleteTask } from "src/services/task"
+import Wrapper from "src/components/Modals/Wrapper"
+import DeleteTaskWarningText from "src/components/Tasks/DeleteTaskWarningText"
+import DeleteTaskWarningButton from "src/components/Tasks/DeleteTaskWarningButton"
 
 export default function DeleteTask() {
   const [state, dispatch] = useContext(Context)
