@@ -32,11 +32,11 @@ export default function CreateTask() {
    * @param {String} event.target.name
    * @param {String|Date} event.target.value
    */
-  const handleInputChange = (event) => {
+  const handleInputChange = useCallback((event) => {
     setTask({ ...task, [event.target.name]: event.target.value })
-  }
+  }, [task])
 
-  const validateTask = () => {
+  const validateTask = useCallback(() => {
     let mutableErrors = {}
 
     let TASK_VALIDATIONS = {
@@ -77,7 +77,7 @@ export default function CreateTask() {
     if(_.isEmpty(mutableErrors)) return true
 
     return false
-  }
+  }, [task])
 
   /**
    * Validate the task
@@ -86,7 +86,7 @@ export default function CreateTask() {
    * 
    * @param {React.FormEvent} event
    */
-  const handleSubmit = (event) => {
+  const handleSubmit = useCallback((event) => {
     event.preventDefault()
 
     if(state.createTaskStatus === "loading") return
@@ -96,7 +96,7 @@ export default function CreateTask() {
     if(isValid) {
       createTask(task, dispatch)
     }
-  }
+  }, [task, state.createTaskStatus, dispatch, validateTask])
 
   return (
     <Wrapper dataTestId="create-task-modal" closeButtonDataTestId="close-create-task-modal-button" title="Create Task" visible={state.showCreateTaskModal} handleClose={handleClose}>
