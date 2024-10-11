@@ -1,5 +1,5 @@
 import Tasks from "src/components/Tasks"
-import { GetEmptyTasksDescription, GetEmptyTasksTitle } from "src/libs/utils/tasks"
+import { getEmptyTasksDescription, getEmptyTasksTitle } from "src/libs/utils/Tasks"
 
 /**
  * Renders list of Tasks or empty tasks message based off of filter and search query
@@ -13,8 +13,8 @@ import { GetEmptyTasksDescription, GetEmptyTasksTitle } from "src/libs/utils/tas
  */
 export default function TasksList(props) {
   if(props.tasks?.length === 0) {
-    const emptyTitle = GetEmptyTasksTitle(props.filter)
-    const emptyDescription = GetEmptyTasksDescription(props.filter, props.searchQuery)
+    const emptyTitle = getEmptyTasksTitle(props.filter)
+    const emptyDescription = getEmptyTasksDescription(props.filter, props.searchQuery)
 
     return (
       <div className="flex flex-col items-center w-full max-w-md mx-auto mt-12">
