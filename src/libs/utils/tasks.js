@@ -14,14 +14,12 @@ export const FilterTasks = (tasks, searchQuery, filter) => {
   })
 }
 
-export const CountTasks = (tasks, searchQuery) => {
-  const match = (task) => _.includes(task.title?.toLowerCase() ?? "", searchQuery?.toLowerCase() ?? "")
-
+export const CountTasks = (tasks) => {
   return {
-    all: _.filter(tasks, task => !task.archive && match(task)).length,
-    open: _.filter(tasks, task => !task.archive && !task.completed && match(task)).length,
-    completed: _.filter(tasks, task => !task.archive && task.completed && match(task)).length,
-    archived: _.filter(tasks, task => task.archive && match(task)).length,
+    all: _.filter(tasks, task => !task.archive).length,
+    open: _.filter(tasks, task => !task.archive && !task.completed).length,
+    completed: _.filter(tasks, task => !task.archive && task.completed).length,
+    archived: _.filter(tasks, task => task.archive).length,
   }
 }
 
