@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useReducer } from "react"
-import { ACTION_TYPES, Reducer } from "./Reducer"
+import { ACTION_TYPES, Reducer } from "src/libs/Reducer"
 
 const initialState = {
   fetch_tasks_request: true,
