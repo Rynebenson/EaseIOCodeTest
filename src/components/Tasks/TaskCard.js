@@ -1,10 +1,12 @@
 import moment from "moment"
-import CompleteTaskButton from "./CompleteTaskButton"
-import DeleteTaskButton from "./DeleteTaskButton"
+import DeleteTaskButton from "./TaskCardDeleteButton"
+import TaskCardCompleteButton from "./TaskCardCompleteButton"
 
 /**
  * @param {React.ComponentProps} props
  * @param {Boolean} props.task
+ * @param {Function} props.handleTaskCompletionClick
+ * @param {Function} props.handleTaskDeletionClick
  * @returns {React.Component}
  */
 export default function TaskCard(props) {
@@ -24,13 +26,23 @@ export default function TaskCard(props) {
           <p className="text-slate-500">{props.task.notes}</p>
         </div>
 
-        <CompleteTaskButton id={props.task.id} completed={props.task.completed} />
+        <TaskCardCompleteButton 
+          id={props.task.id} 
+          completed={props.task.completed} 
+          handleClick={props.handleTaskCompletionClick} 
+        />
       </div>
 
       <div className="flex items-center border-t border-slate-100 pt-3 mt-6">
-        <p className="text-sm text-slate-500">{moment(`${props.task.date} ${props.task.time}`).format("MMMM Do, YYYY h:mm a")}</p>
+        <p className="text-sm text-slate-500">
+          {moment(`${props.task.date} ${props.task.time}`).format("MMMM Do, YYYY h:mm a")}
+        </p>
 
-        <DeleteTaskButton id={props.task.id} title={props.task.title} />
+        <DeleteTaskButton 
+          id={props.task.id} 
+          title={props.task.title} 
+          handleClick={props.handleTaskDeletionClick}
+        />
       </div>
     </div>
   )

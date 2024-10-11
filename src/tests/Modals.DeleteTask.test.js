@@ -24,7 +24,7 @@ describe('<Modals.DeleteTask />', () => {
     deleteTaskStatus: '',
     archiveTaskStatus: '',
   };
-  const dispatch = jest.fn();
+  const dispatch = jest.fn()
 
   beforeEach(() => {
     dispatch.mockClear()

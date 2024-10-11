@@ -1,18 +1,11 @@
-import { useContext, useState } from "react"
 import { TbSearch } from "react-icons/tb"
-import { Context } from "../../libs/Store"
-import { ACTION_TYPES } from "../../libs/Reducer"
 
-export default function SearchInput() {
-  const [query, setQuery] = useState("")
-  const [, dispatch] = useContext(Context)
-
-  const handleChange = (event) => {
-    setQuery(event.target.value)
-
-    dispatch({ type: ACTION_TYPES.UPDATE_SEARCH_QUERY, payload: event.target.value })
-  }
-
+/**
+ * @param {React.ComponentProps} props
+ * @param {String} props.query
+ * @returns {React.Component}
+ */
+export default function TasksSearchInput(props) {
   return (
     <div className="relative">
       <div className="relative">
@@ -24,8 +17,8 @@ export default function SearchInput() {
           placeholder="Search tasks"
           type="text"
           name="query"
-          value={query}
-          onChange={handleChange}
+          value={props.query}
+          onChange={props.handleInputChange}
           autoComplete="off"
         />
       </div>
